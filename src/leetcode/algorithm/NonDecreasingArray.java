@@ -13,11 +13,27 @@ package leetcode.algorithm;
  Input: [4,2,1]
  Output: False
  Explanation: You can't get a non-decreasing array by modify at most one element.
+
+ //wrong direct:思考了 i ,i - 1 ,i + 1 , 多思考了i + 2，没有考虑到循环性
  */
 public class NonDecreasingArray {
 
     public static void main(String[] args) {
-
+        int[] nums = {4,2,1};
+        int count = 0;
+        int temp = 0;
+        for(int i = 0; i < nums.length && count < 1; i++){
+            if(i + 1 < nums.length && nums[i] > nums[i + 1]){
+                count ++;
+                if(i - 1 < 0 || nums[i + 1]>=nums[i - 1])nums[i] = nums[i+1];
+                else nums[i +1] = nums[i];
+            }
+        }
+        if(count > 1)
+            System.out.println(false);
+        else
+            System.out.println(true);
     }
 }
+
 
