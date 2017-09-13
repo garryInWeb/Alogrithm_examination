@@ -17,26 +17,15 @@ public class AddTwoNum {
         int step = 0;
         while (l1 != null || l2 != null){
             int a = 0,b = 0;
-            if(l1 != null)
-                a = l1.val;
-            if(l2 != null)
-                b = l2.val;
+            if(l1 != null) a = l1.val;
+            if(l2 != null) b = l2.val;
             int temp = a + b + step;
-            int index = temp % 10;
             step = temp / 10;
-            res_temp.next = new ListNode(index);
+            res_temp.next = new ListNode(temp % 10);
             res_temp = res_temp.next;
-            if(l1 != null && l1.next != null)
-                l1 = l1.next;
-            else
-                l1 = null;
-            if(l2 != null && l2.next != null)
-                l2 = l2.next;
-            else
-                l2 = null;
-            if(step > 0){
-                res_temp.next = new ListNode(step);
-            }
+            if(l1 != null) l1 = l1.next;
+            if(l2 != null) l2 = l2.next;
+            if(step > 0)res_temp.next = new ListNode(step);
         }
         return result.next;
     }
